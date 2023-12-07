@@ -6,5 +6,5 @@
 **Grupo (N° USP)**:
 - Júlia Du Bois Araújo Silva (14584360)
 - Lucas (********)
-- Thiago (********)
+- Thiago (14609529)
 
