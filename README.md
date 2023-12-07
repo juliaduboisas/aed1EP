@@ -1,5 +1,5 @@
 # AED1 - EP
-**Professor**: Coutinho
+**Professor**: Flávio Luís Coutinho
 
 **Turma**: 04
 
