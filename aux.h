@@ -9,3 +9,8 @@
  * - -1 se for um comando inválido
 */
 int checaComando(char* comando, char* palavra);
+
+/**
+ * Altera os caracteres de uma string de maiusculo para minusculo.
+*/
+void lowercaseSearch(char* palavra);

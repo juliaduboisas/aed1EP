@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "aux.h"
+
 #define TAMANHO 1000
 
 //funcao main utiliza o inteiro argc (número de palavras de argv) e o ponteiro para ponteiro de char argv (palavras)
@@ -45,6 +47,8 @@ int main(int argc, char ** argv){
 				// da mesma, uma vez que o ponteiro 'palavra' aponta para uma 
 				// substring dentro da string 'linha', e a cada nova linha lida
 				// o conteúdo da linha anterior é sobreescrito.
+
+				lowercaseSearch(palavra);
 
 				printf("\t\t'%s'\n", palavra); //imprime palavras da linha 'linha' separadamente
 			}
