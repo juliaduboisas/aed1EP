@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "aux.h"
+
 int main(int argc, char ** argv){
+
+    //ERROS DE EXECUCAO INVALIDA
     if(argc != 3){ //Testa de a funcao recebeu os argumentos necessarios. Se nao recebeu, avisa o usuario e sai. 
         printf("Esse programa deve ser executado usando: %s nome_do_arquivo.txt tipo_de_lista\n", argv[0]);
         return 1;
@@ -15,9 +19,28 @@ int main(int argc, char ** argv){
         printf("O arquivo selecionado nao foi encontrado ou nao pode ser lido. Esse programa deve ser executado com um arquivo existente.\n");
         return 3;
     }
+    //FIM DE TESTES DE ERROS DE EXECUCAO INVALIDA
     
-    
-    
+    //LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
+    //FIM DE LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
+
+    //LOOP DE COMANDOS DO USUARIO (já funciona)
+    //chechaComando()
+    char comando[100], palavra[100];
+    printf("> ");
+    scanf("%s", comando);
+    int retornoComando = checaComando(comando, palavra);
+    while(retornoComando!=0){
+        if(retornoComando == 1){
+            //realizar busca
+        } else {
+            printf("Comando precisa ser 'busca' ou 'fim'.\n");
+        }
+        printf("> ");
+        scanf("%s", comando);
+        retornoComando = checaComando(comando, palavra);
+    }
+    //FIM DE LOOP DE COMANDOS DO USUARIO
     
     //TODO O TEXTO DO PROGRAMA TEM QUE SER ESCRITO ANTES DESSE PONTO
     fclose(file);
