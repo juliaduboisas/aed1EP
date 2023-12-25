@@ -33,6 +33,7 @@ int main(int argc, char ** argv){
     while(retornoComando!=0){
         if(retornoComando == 1){
             //realizar busca
+            printf("Buscando %s...\n", palavra); //debug
         } else {
             printf("Comando precisa ser 'busca' ou 'fim'.\n");
         }

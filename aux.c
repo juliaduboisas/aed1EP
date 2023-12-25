@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "aux.h"
 
@@ -12,6 +13,12 @@ void clearLine(){
     scanf("%[^\n]%*c", tmp);
 }
 
+void lowercaseSearch(char* palavra){
+    for(int i = 0; palavra[i]; i++){
+        palavra[i] = tolower(palavra[i]);
+    }
+}
+
 int checaComando(char* comando, char* palavra){
     if(strcmp(comando, "fim") == 0) { //se for "fim", retorna NULL
         clearLine();
@@ -20,6 +27,7 @@ int checaComando(char* comando, char* palavra){
     }
     if(strcmp(comando, "busca")== 0){ //se for "busca", entra em busca
         scanf("%s", palavra); //retorna a palavra procurada
+        lowercaseSearch(palavra);
         clearLine();
         return 1; 
     }
