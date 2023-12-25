@@ -31,6 +31,10 @@ int main(int argc, char ** argv){
 			
 			if( (quebra_de_linha = strrchr(linha, '\n')) ) *quebra_de_linha = 0; //se a linha acaba, estabele uma quebra de linha
 
+			substituiChar(linha, ',', ' ');
+			substituiChar(linha, '-', ' ');
+			substituiChar(linha, '.', ' ');
+
 			printf("linha %03d: '%s'\n", contador_linha + 1, linha); //imprime a linha 'linha'
 
 			// fazemos uma copia do endereço que corresponde ao array de chars 
@@ -49,8 +53,9 @@ int main(int argc, char ** argv){
 				// o conteúdo da linha anterior é sobreescrito.
 
 				lowercaseSearch(palavra);
+				if(strcmp(palavra, "")!=0) printf("\t\t'%s'\n", palavra); //remove palavras nulas e imprime palavras da linha 'linha' separadamente
 
-				printf("\t\t'%s'\n", palavra); //imprime palavras da linha 'linha' separadamente
+
 			}
 
 			contador_linha++;

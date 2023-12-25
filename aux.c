@@ -19,6 +19,12 @@ void lowercaseSearch(char* palavra){
     }
 }
 
+void substituiChar(char* original, char substituir, char substituto){
+    for(int i = 0; original[i]; i++){
+        if(original[i]==substituir) original[i] = substituto;
+    }
+}
+
 int checaComando(char* comando, char* palavra){
     if(strcmp(comando, "fim") == 0) { //se for "fim", retorna NULL
         clearLine();
