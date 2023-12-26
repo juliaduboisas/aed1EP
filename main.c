@@ -35,7 +35,7 @@ int main(int argc, char ** argv){
             //realizar busca
             printf("Buscando %s...\n", palavra); //debug
         } else {
-            printf("Comando precisa ser 'busca' ou 'fim'.\n");
+            printf("Opcao invalida!\n");
         }
         printf("> ");
         scanf("%s", comando);

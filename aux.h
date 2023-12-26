@@ -13,7 +13,7 @@ int checaComando(char* comando, char* palavra);
 /**
  * Altera os caracteres de uma string de maiusculo para minusculo.
 */
-void lowercaseSearch(char* palavra);
+void toLowercase(char* palavra);
 
 /**
  * Substitui um char "substituir" pelo char "substituto" na string "original".

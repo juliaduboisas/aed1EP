@@ -52,7 +52,7 @@ int main(int argc, char ** argv){
 				// substring dentro da string 'linha', e a cada nova linha lida
 				// o conteúdo da linha anterior é sobreescrito.
 
-				lowercaseSearch(palavra);
+				toLowercase(palavra);
 				if(strcmp(palavra, "")!=0) printf("\t\t'%s'\n", palavra); //remove palavras nulas e imprime palavras da linha 'linha' separadamente
 
 
