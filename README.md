@@ -9,6 +9,7 @@
 - Thiago (14609529)
 
 **Instruções de compilação**:
+
 Para compilar, deve-se compilar primeiro a biblioteca auxiliar (aux.c) utilizando o seguinte comando:
 gcc -c -o aux.o aux.c
 E em seguida compilar o main com o aux.o pelo seguinte comando:
