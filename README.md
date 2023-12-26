@@ -5,7 +5,7 @@
 
 **Grupo (N° USP)**:
 - Júlia Du Bois Araújo Silva (14584360)
-- Lucas (********)
+- Lucas Kaufmann (14591100)
 - Thiago (14609529)
 
 **Instruções de compilação**:
