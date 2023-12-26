@@ -10,10 +10,6 @@
 
 **Instruções de compilação**:
 
-Para compilar, deve-se compilar primeiro a biblioteca auxiliar (aux.c) utilizando o seguinte comando:
+Basta resolver as dependências de pacotes e utilizar o make:
 
-```gcc -c -o aux.o aux.c```
-
-E em seguida compilar o main com o aux.o pelo seguinte comando:
-
-```gcc -o ep main.c aux.o```
+```make all```
