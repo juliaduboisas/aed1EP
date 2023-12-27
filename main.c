@@ -68,10 +68,10 @@ int main(int argc, char ** argv){
             //else buscaArvore(arvore, palavra);
             clock_t end = clock(); //guarda o momento de finalizacao do comando (no caso, a busca)
             int timeSpent = end - begin; //calcula o tempo total de execucao
-            if(resposta != NULL){ //se a palavra buscada nao estiver no texto
-                printf("Palavra '%s' nao encontrada.", palavra); //imprime texto de resposta
+            if(resposta == NULL){ //se a palavra buscada nao estiver no texto
+                printf("Palavra '%s' nao encontrada.\n", palavra); //imprime texto de resposta
             } else printToken(resposta, arquivo); //se a palavra estiver no texto, imprime as infos necessarioas
-            printf("Tempo de busca: %05d\n", timeSpent); //imprime texto de busca
+            printf("Tempo de busca: %05d ms\n", timeSpent); //imprime texto de busca
         } else { //se o comando nao for valido
             printf("Opcao invalida!\n");
         } //aguarda proximo comando, ate o usuario digitar 'fim'
