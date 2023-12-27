@@ -1,10 +1,13 @@
 #Configurando o Makefile
 
-all: aux
-	gcc aux.o main.c -o ep
+all: aux lista
+	gcc aux.o lista.o main.c -o ep
 
 aux:
 	gcc -c -o aux.o aux.c
 
+lista:
+	gcc -c -o lista.o lista.c
+
 clean:
-	rm -rf *.o
+	rm -rf ep *.o

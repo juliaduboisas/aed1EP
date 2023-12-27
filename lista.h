@@ -40,3 +40,5 @@ void updateToken(TokenPalavra* token, int linha);
  * Funcao que imprime um token e todas as suas informacoes.
 */
 void printToken(TokenPalavra* token);
+
+TokenPalavra * buscaLista (Lista * lista, char * palavraBuscada);

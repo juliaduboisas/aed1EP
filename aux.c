@@ -13,7 +13,7 @@ void clearLine(){
     scanf("%[^\n]%*c", tmp);
 }
 
-void lowercaseSearch(char* palavra){
+void toLowercase(char* palavra){
     for(int i = 0; palavra[i]; i++){
         palavra[i] = tolower(palavra[i]);
     }
@@ -33,7 +33,7 @@ int checaComando(char* comando, char* palavra){
     }
     if(strcmp(comando, "busca")== 0){ //se for "busca", entra em busca
         scanf("%s", palavra); //retorna a palavra procurada
-        lowercaseSearch(palavra);
+        toLowercase(palavra);
         clearLine();
         return 1; 
     }

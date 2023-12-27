@@ -83,7 +83,11 @@ void imprimeLista(Lista * lista){
     }
 }
 
-///////////////////////////////////////////////////////
+//TokenPalavra buscaLista(Lista * lista, char * palavraBuscada){
+//    
+//}
+
+/////////////////////////////////////////////////////// comentar isso antes de mandar o makefile
 int main(){ //casos de teste
     TokenPalavra token1 = criarTokenLista("anakim", 3);
     TokenPalavra token2 = criarTokenLista("lulu", 7);
