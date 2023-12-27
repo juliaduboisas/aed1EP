@@ -64,9 +64,9 @@ Boolean insereLista(Lista * lista, TokenPalavra * token){
                 updateToken(p->token, novo->token->linha[i]);
             }
             return TRUE;
-        } else if(cmp > 0){ //antes alfabeticamente
+        } else if(cmp > 0){ //novo é depois alfabeticamente que p
             anterior = p;
-        } else{ //depois alfabeticamente
+        } else{ //nov é antes alfabeticamente que p
             novo->proximo = p;
         }
         p = p->proximo; //passa para a proxima palavra
@@ -83,9 +83,22 @@ void imprimeLista(Lista * lista){
     }
 }
 
-//TokenPalavra buscaLista(Lista * lista, char * palavraBuscada){
-//    
-//}
+Boolean buscaLista(Lista * lista, char * palavraBuscada){
+    NoLista * p;
+    for(p = lista->primeiro; p; p=p->proximo){
+        int cmp = strcmp(p->token->palavra, palavraBuscada);
+        if(cmp == 0){
+            printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", p->token->contagem, palavraBuscada);
+            for(int i = 0; i<p->token->contagem; i++){
+                printf("linha: %i\n", p->token->linha[i]);
+            }
+            return TRUE;
+        } else if(cmp > 0){
+            printf("Palavra '%s' nao encontrada.\n", palavraBuscada);
+            return FALSE;
+        }
+    }
+}
 
 /////////////////////////////////////////////////////// comentar isso antes de mandar o makefile
 int main(){ //casos de teste
@@ -93,11 +106,16 @@ int main(){ //casos de teste
     TokenPalavra token2 = criarTokenLista("lulu", 7);
     TokenPalavra token22 = criarTokenLista("lulu", 8);
     TokenPalavra token3 = criarTokenLista("zebra", 3);
+    TokenPalavra token4 = criarTokenLista("pindamonhangaba", 43);
     Lista* lista = criarLista();
     insereLista(lista, &token3);
     insereLista(lista, &token1);
     insereLista(lista, &token2);
     insereLista(lista, &token22);
+    insereLista(lista, &token4);
     imprimeLista(lista);
+    buscaLista(lista, "zebra");
+    buscaLista(lista, "lulu");
+    buscaLista(lista, "paulo");
     return 0;
 }

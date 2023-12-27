@@ -41,4 +41,8 @@ void updateToken(TokenPalavra* token, int linha);
 */
 void printToken(TokenPalavra* token);
 
-TokenPalavra * buscaLista (Lista * lista, char * palavraBuscada);
+/**
+ * Funcao que busca em uma lista. Se encontra a palavra, já imprime seu token,
+ * e se nao a encontra, imprime que ela nao foi encontrada.
+*/
+Boolean buscaLista (Lista * lista, char * palavraBuscada);

@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "aux.h"
+#include "lista.h"
 
 int main(int argc, char ** argv){
 
