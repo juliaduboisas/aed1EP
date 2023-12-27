@@ -6,6 +6,8 @@
 
 int main(int argc, char ** argv){
 
+    int indexType;
+
     //ERROS DE EXECUCAO INVALIDA
     if(argc != 3){ //Testa de a funcao recebeu os argumentos necessarios. Se nao recebeu, avisa o usuario e sai. 
         printf("Esse programa deve ser executado usando: %s nome_do_arquivo.txt tipo_de_lista\n", argv[0]);
@@ -23,6 +25,18 @@ int main(int argc, char ** argv){
     //FIM DE TESTES DE ERROS DE EXECUCAO INVALIDA
     
     //LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
+    Lista * lista = NULL;
+    //Arvore * arvore = NULL;
+    if(strcmp(argv[2], "lista") == 0){
+        lista = criarLista();
+        criarIndexLista(lista, file);
+        indexType = 0;
+    }
+    // else {
+    //      arvore = criarArvore();
+    //      indexType = 1;
+    //}
+
     //FIM DE LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
 
     //LOOP DE COMANDOS DO USUARIO (já funciona)
@@ -35,6 +49,8 @@ int main(int argc, char ** argv){
         if(retornoComando == 1){
             //realizar busca
             printf("Buscando %s...\n", palavra); //debug
+            if(indexType == 0) buscaLista(lista, palavra);
+            //else buscaArvore(arvore, palavra);
         } else {
             printf("Opcao invalida!\n");
         }

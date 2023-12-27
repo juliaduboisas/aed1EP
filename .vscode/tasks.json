@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "aux.o",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

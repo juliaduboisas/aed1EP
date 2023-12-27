@@ -9,7 +9,7 @@
 //funcao main utiliza o inteiro argc (número de palavras de argv) e o ponteiro para ponteiro de char argv (palavras)
 //dentre essas palavras, a primeira (argv[0]) sempre será o nome do arquivo executável e, portanto, argc sempre contará uma
 //palavra a mais do que os argumentos
-int main(int argc, char ** argv){
+int main(int argc, char ** argv, int indexType){
 
 	FILE * in;
 	char * linha;
@@ -54,8 +54,7 @@ int main(int argc, char ** argv){
 
 				toLowercase(palavra);
 				if(strcmp(palavra, "")!=0) printf("\t\t'%s'\n", palavra); //remove palavras nulas e imprime palavras da linha 'linha' separadamente
-
-
+				TokenPalavra * token = criarTokenLista(palavra, contador_linha);
 			}
 
 			contador_linha++;
