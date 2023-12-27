@@ -3,15 +3,6 @@
 typedef int Boolean;
 
 /**
- * Estrutura que define as informacoes basicas de cada palavra.
-*/
-typedef struct tokenPalavra {
-    char* palavra;
-    int contagem;
-    int* linha;
-} TokenPalavra;
-
-/**
  * Estrutura que define cada elemento da lista.
 */
 typedef struct noLista {

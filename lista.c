@@ -13,7 +13,9 @@
 TokenPalavra* criarTokenLista(char* palavra, int linha){ //esse token e sensivel a maiusculas
     TokenPalavra* token = (TokenPalavra*)malloc(1*(sizeof(TokenPalavra))); //cria o token
     //atualiza as variáveis do token
-    token->palavra = palavra; //se quisermos, podemos inserir a funcao toLowercase de aux.h e tirar de leitorTextos.c
+    int tamanhoPalavra = strlen(palavra); //define tamanho da palavra
+    token->palavra = (char*)malloc(tamanhoPalavra*(sizeof(char))); //reserva o espaço da palavra na memória
+    strcpy(token->palavra, palavra); //se quisermos, podemos inserir a funcao toLowercase de aux.h e tirar de leitorTextos.c
     token->contagem = 1;
     token->linha = (int*)malloc(token->contagem*(sizeof(int)));
     token->linha[token->contagem-1] = linha;
@@ -68,7 +70,6 @@ Boolean insereLista(Lista * lista, TokenPalavra * token){
         //retorna 0 se sao iguais, >0 se o primeiro caracterer que difere da primeira e menor alfabeticamente que o da segunda
         //e <0 se o primeiro caracterer que difere da primeira e maior alfabeticamente que o da segunda
         int cmp = strcmp(novo->token->palavra, p->token->palavra);
-        printf("cmp {%s} {%s} = %i\n", novo->token->palavra, p->token->palavra, cmp);
         if (cmp == 0){ //palavras iguais
             for (int i = 0; i < novo->token->contagem; i++) {
                 updateToken(p->token, novo->token->linha[i]);
@@ -84,7 +85,6 @@ Boolean insereLista(Lista * lista, TokenPalavra * token){
     }
     if(anterior) anterior->proximo = novo; // se houver anterior
     else lista->primeiro = novo; //se nao houver anterior
-    imprimeLista(lista);
     return TRUE;
 }
 
@@ -129,6 +129,7 @@ int criarIndexLista(Lista * lista, FILE * file){
 		// usado para armazenar cada linha lida do arquivo pois a função 'strsep' 
 		// modifica o endereço do ponteiro a cada chamada feita a esta função (e 
 		// não queremos que 'linha' deixe de apontar para o inicio do array).
+        //(coutinho)
 
 		copia_ponteiro_linha = linha;
 
@@ -138,12 +139,10 @@ int criarIndexLista(Lista * lista, FILE * file){
 			// para implementar o índice, será necessário fazer uma copia
 			// da mesma, uma vez que o ponteiro 'palavra' aponta para uma 
 			// substring dentro da string 'linha', e a cada nova linha lida
-			// o conteúdo da linha anterior é sobreescrito.
-			
+			// o conteúdo da linha anterior é sobreescrito. (coutinho)
 			
             if(strcmp(palavra, "") != 0){
                 toLowercase(palavra);
-                printf("\t\t'%s'\n", palavra); //remove palavras nulas e imprime palavras da linha 'linha' separadamente
                 TokenPalavra * token = criarTokenLista(palavra, contador_linha + 1);
                 insereLista(lista, token);
             }
@@ -159,11 +158,11 @@ int criarIndexLista(Lista * lista, FILE * file){
 }
 
 /////////////////////////////////////////////////////// comentar isso antes de mandar o makefile
-int main(){ //casos de teste
+/*int main(){ //casos de teste
     Lista* lista = criarLista();
     FILE * file = fopen("loremIpsum.txt", "r");
     criarIndexLista(lista, file);
     fclose(file);
     imprimeLista(lista);
     return 0;
-}
+}*/
