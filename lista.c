@@ -3,7 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "aux.h"
 #include "lista.h"
 
 #define TRUE 1
@@ -30,14 +29,11 @@ void updateToken(TokenPalavra* token, int linha){
 } //nessa funcao, se alguém escrever "hello hello hello" a linha vai aparecer triplicada, creio que e
   //situacao de arrumar na impressao (mais trabalho arrumar aqui que la)
 
-void printToken(TokenPalavra* token){
-    printf("palavra [%s][%i] {", token->palavra, token->contagem); //imprime a palavra
-    //printf("contagem: %i\n", token->contagem); //imprime a contagem
-    //printf("linhas: ");
-    for(int i = 1; i<=token->contagem; i++){ //loop que imprime todas as linhas
-        printf("%i ", token->linha[i-1]);
+void printToken(TokenPalavra* token, Arquivo* arquivo){
+    printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", token->contagem, token->palavra);
+    for(int i = 0; i<token->contagem; i++){
+        printf("%05d: %s\n", token->linha[i], arquivo->linhas[token->linha[i]-1].conteudo);
     }
-    printf("}\n");
 }
 
 Lista * criarLista(){
@@ -47,10 +43,10 @@ Lista * criarLista(){
     return lista;
 }
 
-void imprimeLista(Lista * lista){
+void imprimeLista(Lista * lista, Arquivo* arquivo){
     NoLista * p;
     for(p = lista->primeiro; p; p=p->proximo){
-        printToken(p->token);
+        printToken(p->token, arquivo);
     }
 }
 
@@ -88,24 +84,19 @@ Boolean insereLista(Lista * lista, TokenPalavra * token){
     return TRUE;
 }
 
-Boolean buscaLista(Lista * lista, char * palavraBuscada){
+TokenPalavra * buscaLista(Lista * lista, char * palavraBuscada){
     NoLista * p;
     for(p = lista->primeiro; p; p=p->proximo){
         int cmp = strcmp(p->token->palavra, palavraBuscada);
         if(cmp == 0){
-            printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", p->token->contagem, palavraBuscada);
-            for(int i = 0; i<p->token->contagem; i++){
-                printf("linha: %i\n", p->token->linha[i]);
-            }
-            return TRUE;
+            return p->token;
         } else if(cmp > 0){
-            printf("Palavra '%s' nao encontrada.\n", palavraBuscada);
-            return FALSE;
+            return NULL;
         }
     }
 }
 
-int criarIndexLista(Lista * lista, FILE * file){
+int criarIndexLista(Lista * lista, FILE * file, Arquivo * arquivo){
     char * linha;
 	char * copia_ponteiro_linha;
 	char * quebra_de_linha;
@@ -119,11 +110,9 @@ int criarIndexLista(Lista * lista, FILE * file){
 			
 		if( (quebra_de_linha = strrchr(linha, '\n')) ) *quebra_de_linha = 0; //se a linha acaba, estabele uma quebra de linha
 
-		substituiChar(linha, ',', ' ');
-		substituiChar(linha, '-', ' ');
-		substituiChar(linha, '.', ' ');
-
-		printf("linha %03d: '%s'\n", contador_linha + 1, linha); //imprime a linha 'linha'
+        insereLinha(arquivo, linha);
+        
+		substituiTodoChar(linha);
 
 		// fazemos uma copia do endereço que corresponde ao array de chars 
 		// usado para armazenar cada linha lida do arquivo pois a função 'strsep' 
@@ -152,8 +141,6 @@ int criarIndexLista(Lista * lista, FILE * file){
 		contador_linha++;
 	}
 
-	printf(">>>>> Arquivo carregado!\n");
-
     return contador_linha;
 }
 
@@ -161,8 +148,15 @@ int criarIndexLista(Lista * lista, FILE * file){
 /*int main(){ //casos de teste
     Lista* lista = criarLista();
     FILE * file = fopen("loremIpsum.txt", "r");
-    criarIndexLista(lista, file);
+    Arquivo * arquivo = (Arquivo*)malloc(1*(sizeof(Arquivo)));
+    arquivo->numLinhas = 0;
+    arquivo->linhas = (Linha*) malloc(sizeof(Linha));
+
+    int contLinha = criarIndexLista(lista, file, arquivo);
     fclose(file);
-    imprimeLista(lista);
+    for(int i = 0; i<contLinha; i++){
+        printf("%05d: %s\n", i+1, arquivo->linhas[i].conteudo);
+    }
+
     return 0;
 }*/

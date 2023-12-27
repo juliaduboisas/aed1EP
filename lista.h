@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+#include "aux.h"
+
 typedef int Boolean;
 
 /**
@@ -38,18 +40,19 @@ Boolean insereLista(Lista * lista, TokenPalavra * token);
 void updateToken(TokenPalavra* token, int linha);
 
 /**
- * Funcao que imprime um token e todas as suas informacoes.
+ * Funcao que imprime um token e todas as suas informacoes. Deve ser usada quando
+ * o token e encontrado na memoria,
 */
-void printToken(TokenPalavra* token);
+void printToken(TokenPalavra* token, Arquivo* arquivo);
 
 /**
  * Funcao que busca em uma lista. Se encontra a palavra, já imprime seu token,
  * e se nao a encontra, imprime que ela nao foi encontrada.
 */
-Boolean buscaLista (Lista * lista, char * palavraBuscada);
+TokenPalavra * buscaLista (Lista * lista, char * palavraBuscada);
 
 /**
  * Funcao que indexa a lista dado certo arquivo. Retorna o numero de linhas
  * do arquivo.
 */
-int criarIndexLista(Lista * lista, FILE * file);
+int criarIndexLista(Lista * lista, FILE * file, Arquivo * arquivo);

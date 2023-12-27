@@ -2,7 +2,6 @@
 #include <string.h>
 #include <time.h>
 
-#include "aux.h"
 #include "lista.h"
 
 int main(int argc, char ** argv){
@@ -18,7 +17,7 @@ int main(int argc, char ** argv){
         printf("O segundo argumento deve ser 'lista' ou 'arvore'\n");
         return 2;
     }
-    clock_t begin = clock();
+    clock_t begin = clock(); //comeca a marcar o tempo para carregar o arquivo e construir o indice
     FILE * file = fopen(argv[1], "r");
     if(file == NULL){ //Testa se o arquivo existe e pode ser lido.
         printf("O arquivo selecionado nao foi encontrado ou nao pode ser lido. Esse programa deve ser executado com um arquivo existente.\n");
@@ -29,14 +28,19 @@ int main(int argc, char ** argv){
     //LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
     Lista * lista = NULL;
     //Arvore * arvore = NULL;
-    if(strcmp(argv[2], "lista") == 0){
-        indexType = 0;
+    Arquivo * arquivo = (Arquivo*)malloc(1*(sizeof(Arquivo)));
+    arquivo->numLinhas = 0;
+    arquivo->linhas = (Linha*) malloc(sizeof(Linha));
+
+    if(strcmp(argv[2], "lista") == 0){ //define o tipo de index como lista
+        indexType = 0; //lista e o tipo 0, arvore sera o tipo 1
+        lista = criarLista(); //cria a lista e a armazena em 'lista'
+        int numLinhas = criarIndexLista(lista, file, arquivo); //indexa a lista e retorna o numero total de linhas em numLinhas
+        clock_t end = clock(); //termina de marcar o tempo para carregar o arquivo e imprimir o indice
+        int timeSpent = end - begin; //calcula o tempo total necessario
+        //imprime infos necessarias
         printf("Tipo de indice:'lista'\n");
         printf("Arquivo de texto: '%s'\n", argv[1]);
-        lista = criarLista();
-        int numLinhas = criarIndexLista(lista, file);
-        clock_t end = clock();
-        int timeSpent = end - begin;
         printf("Numero de linhas do arquivo: %i\n", numLinhas);
         printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", timeSpent);
     }
@@ -54,18 +58,23 @@ int main(int argc, char ** argv){
     scanf("%s", comando);
     int retornoComando = checaComando(comando, palavra);
     while(retornoComando!=0){
-        begin = clock();
         if(retornoComando == 1){
+            begin = clock(); //marca o momento de recebimento do comando
             //realizar busca
-            printf("Buscando %s...\n", palavra); //debug
-            if(indexType == 0) buscaLista(lista, palavra);
+            TokenPalavra * resposta = NULL; //inicializa o TokenPalavra resposta
+            if(indexType == 0){ //se a busca for com index em lista
+                resposta = buscaLista(lista, palavra); //a resposta e o retorno da buscaLista
+            }
             //else buscaArvore(arvore, palavra);
-            clock_t end = clock();
-            int timeSpent = end - begin;
-            printf("Tempo de busca: %05d\n", timeSpent);
-        } else {
+            clock_t end = clock(); //guarda o momento de finalizacao do comando (no caso, a busca)
+            int timeSpent = end - begin; //calcula o tempo total de execucao
+            if(resposta != NULL){ //se a palavra buscada nao estiver no texto
+                printf("Palavra '%s' nao encontrada.", palavra); //imprime texto de resposta
+            } else printToken(resposta, arquivo); //se a palavra estiver no texto, imprime as infos necessarioas
+            printf("Tempo de busca: %05d\n", timeSpent); //imprime texto de busca
+        } else { //se o comando nao for valido
             printf("Opcao invalida!\n");
-        }
+        } //aguarda proximo comando, ate o usuario digitar 'fim'
         printf("> ");
         scanf("%s", comando);
         retornoComando = checaComando(comando, palavra);

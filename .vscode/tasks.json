@@ -9,6 +9,7 @@
                 "-g",
                 "${file}",
                 "aux.o",
+                "lista.o",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
