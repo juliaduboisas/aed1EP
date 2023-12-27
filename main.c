@@ -36,9 +36,9 @@ int main(int argc, char ** argv){
         lista = criarLista();
         int numLinhas = criarIndexLista(lista, file);
         clock_t end = clock();
-        int time_spent = end - begin;
+        int timeSpent = end - begin;
         printf("Numero de linhas do arquivo: %i\n", numLinhas);
-        printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", time_spent);
+        printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", timeSpent);
     }
     // else {
     //      arvore = criarArvore();
@@ -61,8 +61,8 @@ int main(int argc, char ** argv){
             if(indexType == 0) buscaLista(lista, palavra);
             //else buscaArvore(arvore, palavra);
             clock_t end = clock();
-            int time_spent = end - begin;
-            printf("Tempo de busca: %05d\n", time_spent);
+            int timeSpent = end - begin;
+            printf("Tempo de busca: %05d\n", timeSpent);
         } else {
             printf("Opcao invalida!\n");
         }
