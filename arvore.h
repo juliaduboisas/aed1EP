@@ -13,7 +13,7 @@
  * Estrutura que define um no da arvore.
 */
 typedef struct noArvore{
-    TokenPalavra palavra;
+    TokenPalavra tokenPalavra;
     struct noArvore * esq;
     struct noArvore * dir;
 } NoArvore;
