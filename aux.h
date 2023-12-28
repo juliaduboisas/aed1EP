@@ -1,3 +1,5 @@
+typedef int Boolean;
+
 /**
  * Estrutura que define as informacoes basicas de cada palavra.
 */

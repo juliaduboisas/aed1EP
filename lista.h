@@ -2,8 +2,6 @@
 
 #include "aux.h"
 
-typedef int Boolean;
-
 /**
  * Estrutura que define cada elemento da lista.
 */

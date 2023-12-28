@@ -61,17 +61,17 @@ void substituiTodoChar(char* original){ //modificar de acordo com o que deve ser
 
 int checaComando(char* comando, char* palavra){
     if(strcmp(comando, "fim") == 0) { //se for "fim", retorna NULL
-        clearLine();
+        clearLine(); //limpa o resto da linha
         printf("$\n");
         return 0;
     }
     if(strcmp(comando, "busca")== 0){ //se for "busca", entra em busca
         scanf("%s", palavra); //retorna a palavra procurada
-        toLowercase(palavra);
-        clearLine();
+        toLowercase(palavra); //coloca a palavra procurada em minusculas
+        clearLine(); //limpa o resto da linha
         return 1; 
     }
-    clearLine();
+    clearLine(); //limpa o resto da linha
     return -1;
 }
 
