@@ -11,21 +11,6 @@
 #define FALSE 0
 #define TAMANHO 1000
 
-
-Arvore* criarArvore(){
-    Arvore * arvore = (Arvore*) malloc (sizeof(Arvore));
-
-    TokenPalavra * n = (TokenPalavra*)malloc(sizeof(TokenPalavra));
-
-    n->palavra = "n";
-
-    arvore->raiz = NULL;
-
-    insereArvore(arvore, n);
-
-    return arvore;
-}
-
 Boolean insereArvoreRec(NoArvore * raiz, NoArvore * novo){
     
     int cmp = strcmp(novo->tokenPalavra->palavra, raiz->tokenPalavra->palavra)
@@ -55,4 +40,18 @@ Boolean insereArvore(Arvore * arvore, TokenPalavra * token){
 
     arvore->raiz = novo;
     return TRUE;
+}
+
+Arvore* criarArvore(){
+    Arvore * arvore = (Arvore*) malloc (sizeof(Arvore));
+
+    TokenPalavra * n = (TokenPalavra*)malloc(sizeof(TokenPalavra));
+
+    n->palavra = "n";
+
+    arvore->raiz = NULL;
+
+    insereArvore(arvore, n);
+
+    return arvore;
 }

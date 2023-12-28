@@ -26,6 +26,11 @@ typedef struct arvore {
 } Arvore;
 
 /**
+ * Funcao que insere elementos (em ordem alfabetica) na arvore
+*/
+Boolean insereArvore(Arvore * arvore, TokenPalavra * token);
+
+/**
  * Funcao que cria a arvore inicial.
 */
 Arvore * criarArvore();
