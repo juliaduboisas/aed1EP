@@ -58,3 +58,14 @@ void insereLinha(Arquivo * arquivo, char* linha);
  * Lê um arquivo e retorna a estrutura Arquivo com as linhas.
 */
 Arquivo * lerArquivo(FILE * file);
+
+/**
+ * Funcao que atualiza um token adicionando todas as suas linhas em token.linhas.
+*/
+void updateToken(TokenPalavra* token, int linha);
+
+/**
+ * Funcao que imprime um token e todas as suas informacoes. Deve ser usada quando
+ * o token e encontrado na memoria,
+*/
+void printToken(TokenPalavra* token, Arquivo* arquivo);

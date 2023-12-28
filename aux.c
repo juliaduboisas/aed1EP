@@ -110,6 +110,22 @@ Arquivo * lerArquivo(FILE * file){ //utiliza parte da implementacao do Coutinho 
     return arquivo; //retorna o arquivo
 }
 
+void updateToken(TokenPalavra* token, int linha){
+    token->contagem++; //aumenta a contagem de aparicoes da palavra
+    //adiciona a nova linha em que aparece em um array
+    token->linha = (int*)reallocarray(token->linha, token->contagem, (sizeof(int)));
+    token->linha[token->contagem-1] = linha;
+} //nessa funcao, se alguém escrever "hello hello hello" a linha vai aparecer triplicada, creio que e
+  //situacao de arrumar na impressao (mais trabalho arrumar aqui que la)
+
+void printToken(TokenPalavra* token, Arquivo* arquivo){
+    printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", token->contagem, token->palavra);
+    for(int i = 0; i<token->contagem; i++){
+        printf("%05d: %s\n", token->linha[i], arquivo->linhas[token->linha[i]-1].conteudo);
+    }
+}
+
+
 //TESTES
 
 //chechaComando()
