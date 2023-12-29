@@ -9,18 +9,6 @@
 #define FALSE 0
 #define TAMANHO 1000
 
-TokenPalavra* criarTokenLista(char* palavra, int linha){ //esse token e sensivel a maiusculas
-    TokenPalavra* token = (TokenPalavra*)malloc(1*(sizeof(TokenPalavra))); //cria o token
-    //atualiza as variáveis do token
-    int tamanhoPalavra = strlen(palavra); //define tamanho da palavra
-    token->palavra = (char*)malloc(tamanhoPalavra*(sizeof(char))); //reserva o espaço da palavra na memória
-    strcpy(token->palavra, palavra); //se quisermos, podemos inserir a funcao toLowercase de aux.h e tirar de leitorTextos.c
-    token->contagem = 1;
-    token->linha = (int*)malloc(token->contagem*(sizeof(int)));
-    token->linha[token->contagem-1] = linha;
-    return token; //retorna o token criado
-}
-
 Lista * criarLista(){
     Lista * lista = (Lista*)malloc(sizeof(Lista));
     lista->primeiro = NULL;
@@ -117,7 +105,7 @@ int criarIndexLista(Lista * lista, FILE * file, Arquivo * arquivo){
 			
             if(strcmp(palavra, "") != 0){
                 toLowercase(palavra);
-                TokenPalavra * token = criarTokenLista(palavra, contador_linha + 1);
+                TokenPalavra * token = criarToken(palavra, contador_linha + 1);
                 insereLista(lista, token);
             }
             

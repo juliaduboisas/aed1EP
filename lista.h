@@ -38,11 +38,6 @@ typedef struct lista{
 } Lista;
 
 /**
- * Funcao que cria um token para a lista.
-*/
-TokenPalavra * criarTokenLista(char* palavra, int linha);
-
-/**
  * Funcao que cria a lista inicial.
 */
 Lista * criarLista();

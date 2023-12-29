@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "lista.h"
+#include "aux.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -13,7 +13,7 @@
  * Estrutura que define um no da arvore.
 */
 typedef struct noArvore{
-    TokenPalavra tokenPalavra; 
+    TokenPalavra * tokenPalavra; 
     struct noArvore * esq; //filho esquerdo do nó atual
     struct noArvore * dir; //filho direito do nó atual
 } NoArvore; //Estrutura tipo 'noArvore'
