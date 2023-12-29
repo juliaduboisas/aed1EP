@@ -2,7 +2,12 @@
 #include <string.h>
 #include <time.h>
 
+#ifndef AUX_h
+#include "aux.h"
+#endif
+
 #include "lista.h"
+#include "arvore.h"
 
 /* 
 TODO
@@ -70,7 +75,11 @@ int main(int argc, char ** argv){
 
     Lista * lista = NULL;
 
-    //Arvore * arvore = NULL;
+    Arvore * arvore = NULL;
+
+    int numLinhas = 0;
+
+    int timeSpent = 0;
 
     Arquivo * arquivo = (Arquivo*)malloc(1*(sizeof(Arquivo)));
     arquivo->numLinhas = 0;
@@ -82,22 +91,29 @@ int main(int argc, char ** argv){
 
         lista = criarLista(); //cria a lista e a armazena em 'lista'
        
-        int numLinhas = criarIndexLista(lista, file, arquivo); //indexa a lista e retorna o numero total de linhas em numLinhas
+        numLinhas = criarIndexLista(lista, file, arquivo); //indexa a lista e retorna o numero total de linhas em numLinhas
       
         clock_t end = clock(); //termina de marcar o tempo para carregar o arquivo e imprimir o indice
        
-        int timeSpent = end - begin; //calcula o tempo total necessario
+        timeSpent = end - begin; //calcula o tempo total necessario
        
-        //imprime infos necessarias
-        printf("Tipo de indice:'lista'\n");
-        printf("Arquivo de texto: '%s'\n", argv[1]);
-        printf("Numero de linhas do arquivo: %i\n", numLinhas);
-        printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", timeSpent);
+    } else {
+
+        indexType = 1;
+        
+        arvore = criarArvore();
+        
+        numLinhas = criarIndexArvore(arvore, file, arquivo);
+
+        clock_t end = clock();
+
+        timeSpent = end - begin;
     }
-    // else {
-    //      arvore = criarArvore();
-    //      indexType = 1;
-    //}
+    //imprime infos necessarias
+    printf("Tipo de indice:'%s'\n", (indexType==0 ? "lista" : "arvore"));
+    printf("Arquivo de texto: '%s'\n", argv[1]);
+    printf("Numero de linhas do arquivo: %i\n", numLinhas);
+    printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", timeSpent);
 
     //FIM DE LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
 

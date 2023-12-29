@@ -1,6 +1,8 @@
 #include <stdlib.h>
 
+#ifndef AUX_h 
 #include "aux.h"
+#endif
 
 /**
  * Nó da lista ligada.

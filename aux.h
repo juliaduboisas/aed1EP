@@ -1,3 +1,6 @@
+#define AUX_h
+
+
 typedef int Boolean;
 
 /**

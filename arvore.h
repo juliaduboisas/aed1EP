@@ -3,7 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 
+#ifndef AUX_h 
 #include "aux.h"
+#endif
 
 #define TRUE 1
 #define FALSE 0
@@ -37,3 +39,8 @@ Boolean insereArvore(Arvore * arvore, TokenPalavra * token); /*Parâmetros são 
  * Funcao que cria a arvore inicial.
 */
 Arvore * criarArvore(); //funcão que retorna um ponteiro para estrutura tipo 'Arvore'
+
+/**
+ * Funcao que cria uma arvore a partir de um arquivo.
+*/
+int criarIndexArvore(Arvore * arvore, FILE * file, Arquivo * arquivo);
