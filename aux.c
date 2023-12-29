@@ -8,17 +8,20 @@
 #define TRUE 1
 #define FALSE 0
 
+// Limpa o buffer de entrada até o caractere '\n'
 void clearLine(){
     char tmp[150];
     scanf("%[^\n]%*c", tmp);
 }
 
+// Converte uma string para minúsculas
 void toLowercase(char* palavra){
     for(int i = 0; palavra[i]; i++){
         palavra[i] = tolower(palavra[i]);
     }
 }
 
+// Substitui um caractere por outro em uma string
 void substituiChar(char* original, char substituir, char substituto){
     for(int i = 0; original[i]; i++){
         if(original[i]==substituir) original[i] = substituto;
@@ -59,6 +62,7 @@ void substituiTodoChar(char* original){ //modificar de acordo com o que deve ser
     substituiChar(original, '~', ' ');
 }
 
+// Verifica e processa comandos de entrada
 int checaComando(char* comando, char* palavra){
     if(strcmp(comando, "fim") == 0) { //se for "fim", retorna NULL
         clearLine(); //limpa o resto da linha
@@ -75,6 +79,7 @@ int checaComando(char* comando, char* palavra){
     return -1;
 }
 
+// Insere uma nova linha em uma estrutura de arquivo
 void insereLinha(Arquivo * arquivo, char* linha){
     arquivo->numLinhas++; //aumenta o numero total de linhas no arquivo para o numero da linha atual
     int tamLinha = strlen(linha); //determina o tamanho da linha
@@ -86,6 +91,7 @@ void insereLinha(Arquivo * arquivo, char* linha){
     arquivo->linhas[arquivo->numLinhas-1] = *linha_; //guarda a linha no espaco numLinhas-1 das linhas do arquivo
 }
 
+// Lê um arquivo e armazena suas linhas em uma estrutura de arquivo
 Arquivo * lerArquivo(FILE * file){ //utiliza parte da implementacao do Coutinho para separar e guardar as linhas
     char * linha;
 	char * quebra_de_linha;
@@ -110,6 +116,7 @@ Arquivo * lerArquivo(FILE * file){ //utiliza parte da implementacao do Coutinho 
     return arquivo; //retorna o arquivo
 }
 
+// Atualiza informações de um token (como contagem e linhas)
 void updateToken(TokenPalavra* token, int linha){
     token->contagem++; //aumenta a contagem de aparicoes da palavra
     //adiciona a nova linha em que aparece em um array
@@ -118,6 +125,7 @@ void updateToken(TokenPalavra* token, int linha){
 } //nessa funcao, se alguém escrever "hello hello hello" a linha vai aparecer triplicada, creio que e
   //situacao de arrumar na impressao (mais trabalho arrumar aqui que la)
 
+// Imprime informações de um token, mostrando suas ocorrências em linhas específicas
 void printToken(TokenPalavra* token, Arquivo* arquivo){
     printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", token->contagem, token->palavra);
     for(int i = 0; i<token->contagem; i++){
