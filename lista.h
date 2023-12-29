@@ -3,7 +3,20 @@
 #include "aux.h"
 
 /**
- * Estrutura que define cada elemento da lista.
+ * Nó da lista ligada.
+ * 
+ * Elementos:
+ * 
+ * > TokenPalavra* token
+ *   Ponteiro para um token, que possui
+ *   o string que é a palavra em si,
+ *   a quantidade de vezes que ela aparece,
+ *   e a matriz dos índices das linhas em que
+ *   ela aparece.
+ * 
+ * > noLista* proximo
+ *   Ponteiro para o proximo elemento
+ *   da lista.
 */
 typedef struct noLista {
     TokenPalavra* token;
@@ -11,7 +24,14 @@ typedef struct noLista {
 } NoLista;
 
 /**
- * Estrutura que define a lista.
+ * Uma lista ligada, cujos nós são structs com
+ * TokenPalavras e o próximo elemento.
+ * 
+ * Elementos:
+ * 
+ * > NoLista * primeiro
+ *  Ponteiro para o primeiro elemento da lista 
+ * 
 */
 typedef struct lista{
     NoLista * primeiro;
