@@ -6,13 +6,21 @@
 
 /* 
 TODO
- + O quê é indexType? 
- - Dá pra mandar os erros para o stdErr?
- - Colocar argumentos em uma lista/tupla/que seja?
- - Adicionar o fim do clock para o carregamento bruto do arquivo.
- - Inverter o caso do arquivo sendo testado se existe depois do relógio ter sido ligado.
- - Mudar os modos de programa para um switch-case.
- - Fazer o clock de indexação também, já que vamos dividir essas questões.
+ + O quê é indexType? // indexType é o tipo de índice que o usuário quiser usar, usa pra definir na main.c
+                        que tipo de criarIndex precisa usar, que tipo de busca etc.
+ - Dá pra mandar os erros para o stdErr? // Para que tipos de erros? Seria realmente interessante pra o que o Coutinho
+                                            pediu ou seria só extra?
+ - Colocar argumentos em uma lista/tupla/que seja? // Honestamente não acho que precisa, o programa está rodando bem sem isso.
+ - Adicionar o fim do clock para o carregamento bruto do arquivo. // No enunciado do EP o tempo de carregamento do arquivo
+                                                                     está ligado ao tempo de criação de índice (juntos),
+                                                                     como dá pra ver no exemplo de saída, por isso nn separei
+                                                                     assim. Se quiserem muito (embora eu ache desnecessário),
+                                                                     precisa lembrar de juntar os dois na hora de exibir o
+                                                                     tempo de execução na saída.
+ - Inverter o caso do arquivo sendo testado se existe depois do relógio ter sido ligado. //  ?????
+ - Mudar os modos de programa para um switch-case. // Não acho que seria vantajoso pois duplicaria desnecessariamente muito
+                                                      código que os dois tipos de índice tem em comum.
+ - Fazer o clock de indexação também, já que vamos dividir essas questões. // mesma coisa que no ponto 3
 */
 
 
