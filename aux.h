@@ -1,3 +1,6 @@
+#define AUX_h
+
+
 typedef int Boolean;
 
 /**
@@ -69,3 +72,8 @@ void updateToken(TokenPalavra* token, int linha);
  * o token e encontrado na memoria,
 */
 void printToken(TokenPalavra* token, Arquivo* arquivo);
+
+/**
+ * Funcao que cria um token.
+*/
+TokenPalavra * criarToken(char* palavra, int linha);

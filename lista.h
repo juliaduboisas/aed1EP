@@ -1,6 +1,8 @@
 #include <stdlib.h>
 
+#ifndef AUX_h 
 #include "aux.h"
+#endif
 
 /**
  * Nó da lista ligada.
@@ -36,11 +38,6 @@ typedef struct noLista {
 typedef struct lista{
     NoLista * primeiro;
 } Lista;
-
-/**
- * Funcao que cria um token para a lista.
-*/
-TokenPalavra * criarTokenLista(char* palavra, int linha);
 
 /**
  * Funcao que cria a lista inicial.

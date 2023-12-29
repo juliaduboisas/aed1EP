@@ -3,7 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "lista.h"
+#ifndef AUX_h 
+#include "aux.h"
+#endif
 
 #define TRUE 1
 #define FALSE 0
@@ -13,20 +15,20 @@
  * Estrutura que define um no da arvore.
 */
 typedef struct noArvore{
-    TokenPalavra tokenPalavra; 
+    TokenPalavra * tokenPalavra; 
     struct noArvore * esq; //filho esquerdo do nó atual
     struct noArvore * dir; //filho direito do nó atual
 } NoArvore; //Estrutura tipo 'noArvore'
 
 /**
- * Estrutura que define a arvore.
+ * Estrutura que define a arvore binaria de busca.
 */
 typedef struct arvore {
     NoArvore * raiz; //Nó raiz que permite acessar todos os subnós
 } Arvore; //Estrutura tipo 'arvore'
 
 /**
- * Funcao que insere elementos (em ordem alfabetica) na arvore
+ * Funcao que insere elementos (em ordem alfabetica) na arvore binaria de busca.
 */
 Boolean insereArvore(Arvore * arvore, TokenPalavra * token); /*Parâmetros são a arvore
                                                              onde os tokens serão inseridos
@@ -37,3 +39,13 @@ Boolean insereArvore(Arvore * arvore, TokenPalavra * token); /*Parâmetros são 
  * Funcao que cria a arvore inicial.
 */
 Arvore * criarArvore(); //funcão que retorna um ponteiro para estrutura tipo 'Arvore'
+
+/**
+ * Funcao que cria uma arvore a partir de um arquivo.
+*/
+int criarIndexArvore(Arvore * arvore, FILE * file, Arquivo * arquivo);
+
+/**
+ * Funcao que busca em uma arvore binaria de busca.
+*/
+TokenPalavra * buscaArvore(Arvore * arvore, char* palavraBuscada);
