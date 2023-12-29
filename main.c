@@ -26,6 +26,7 @@ TODO
  - Mudar os modos de programa para um switch-case. // Não acho que seria vantajoso pois duplicaria desnecessariamente muito
                                                       código que os dois tipos de índice tem em comum.
  - Fazer o clock de indexação também, já que vamos dividir essas questões. // mesma coisa que no ponto 3
+ - free() a memória alocada em main
 
  - (FEITO) Criação da função criaIndexArvore() que crie um índice em árvore à partir de um arquivo .txt qualquer.
  - (FEITO) Criação da função buscaArvore() que busque uma palavra dentro de um índice em árvore e retorne o token, se
