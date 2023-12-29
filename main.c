@@ -25,7 +25,7 @@ TODO
  - Criação da função criaIndexArvore() que crie um índice em árvore à partir de um arquivo .txt qualquer.
  - Criação da função buscaArvore() que busque uma palavra dentro de um índice em árvore e retorne o token, se encontrar
    ou NULL, se não encontrar.
- - Atualização de Makefile para a inclusão dos arquivos arvore com
+ - (FEITO) Atualização de Makefile para a inclusão dos arquivos arvore com
      gcc -c -o arvore.o arvore.c
  - Realização de testes com diferentes arquivos .txt, preferencialmente de diversos tamanhos e em diferentes línguas,
    documentação dos testes e análise do resultado. Esse relatório deve ser incluido em um arquivo relatorio.pdf
