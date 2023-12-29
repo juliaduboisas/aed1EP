@@ -137,6 +137,8 @@ int main(int argc, char ** argv){
            
             if(indexType == 0){ //se a busca for com index em lista
                 resposta = buscaLista(lista, palavra); //a resposta e o retorno da buscaLista
+            } else {
+                resposta = buscaArvore(arvore, palavra);
             }
            
             //else buscaArvore(arvore, palavra);

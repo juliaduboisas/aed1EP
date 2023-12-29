@@ -119,3 +119,49 @@ int criarIndexArvore(Arvore * arvore, FILE * file, Arquivo * arquivo){
 
     return contador_linha;
 }
+
+NoArvore * buscaArvoreRec(NoArvore * no, char* palavraBuscada){
+    if(no){
+        int cmp = strcmp(no->tokenPalavra->palavra, palavraBuscada);
+        if(cmp == 0) return no;
+        if(cmp > 0) return buscaArvoreRec(no->esq, palavraBuscada);
+        return buscaArvoreRec(no->dir, palavraBuscada);
+    }
+
+    return NULL;
+}
+
+TokenPalavra * buscaArvore(Arvore * arvore, char* palavraBuscada){
+    NoArvore * resposta = NULL;
+    int cmp = strcmp(arvore->raiz->tokenPalavra->palavra, palavraBuscada);
+    if(cmp == 0 && arvore->raiz->tokenPalavra->linha != NULL){
+        return arvore->raiz->tokenPalavra;
+    } else if (cmp > 0) {
+        resposta = buscaArvoreRec(arvore->raiz->esq, palavraBuscada);
+    } else {
+        resposta = buscaArvoreRec(arvore->raiz->dir, palavraBuscada);
+    }
+
+    if(resposta == NULL) return NULL;
+    else return resposta->tokenPalavra;
+}
+/*
+int main(){
+    Arvore * arvore  = criarArvore();
+    Arquivo * arquivo = (Arquivo*)malloc(1*(sizeof(Arquivo)));
+    arquivo->numLinhas = 0;
+    arquivo->linhas = (Linha*) malloc(sizeof(Linha));
+
+    FILE * f = fopen("loremIpsum.txt", "r");
+    criarIndexArvore(arvore, f, arquivo);
+
+    TokenPalavra* resposta = buscaArvore(arvore, "ut");
+    if(resposta){
+        printf("encontrado %s\n", resposta->palavra);
+    } else {
+        printf("Nada encontrado.\n");
+    }
+    fclose(f);
+    return 0;
+}
+*/

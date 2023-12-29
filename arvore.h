@@ -21,14 +21,14 @@ typedef struct noArvore{
 } NoArvore; //Estrutura tipo 'noArvore'
 
 /**
- * Estrutura que define a arvore.
+ * Estrutura que define a arvore binaria de busca.
 */
 typedef struct arvore {
     NoArvore * raiz; //Nó raiz que permite acessar todos os subnós
 } Arvore; //Estrutura tipo 'arvore'
 
 /**
- * Funcao que insere elementos (em ordem alfabetica) na arvore
+ * Funcao que insere elementos (em ordem alfabetica) na arvore binaria de busca.
 */
 Boolean insereArvore(Arvore * arvore, TokenPalavra * token); /*Parâmetros são a arvore
                                                              onde os tokens serão inseridos
@@ -44,3 +44,8 @@ Arvore * criarArvore(); //funcão que retorna um ponteiro para estrutura tipo 'A
  * Funcao que cria uma arvore a partir de um arquivo.
 */
 int criarIndexArvore(Arvore * arvore, FILE * file, Arquivo * arquivo);
+
+/**
+ * Funcao que busca em uma arvore binaria de busca.
+*/
+TokenPalavra * buscaArvore(Arvore * arvore, char* palavraBuscada);
