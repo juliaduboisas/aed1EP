@@ -13,24 +13,27 @@
  * Estrutura que define um no da arvore.
 */
 typedef struct noArvore{
-    TokenPalavra tokenPalavra;
-    struct noArvore * esq;
-    struct noArvore * dir;
-} NoArvore;
+    TokenPalavra tokenPalavra; 
+    struct noArvore * esq; //filho esquerdo do nó atual
+    struct noArvore * dir; //filho direito do nó atual
+} NoArvore; //Estrutura tipo 'noArvore'
 
 /**
  * Estrutura que define a arvore.
 */
 typedef struct arvore {
-    NoArvore * raiz;
-} Arvore;
+    NoArvore * raiz; //Nó raiz que permite acessar todos os subnós
+} Arvore; //Estrutura tipo 'arvore'
 
 /**
  * Funcao que insere elementos (em ordem alfabetica) na arvore
 */
-Boolean insereArvore(Arvore * arvore, TokenPalavra * token);
-
+Boolean insereArvore(Arvore * arvore, TokenPalavra * token); /*Parâmetros são a arvore
+                                                             onde os tokens serão inseridos
+                                                             e token contém as informações 
+                                                             sobre a palavra*/ 
+                                                          
 /**
  * Funcao que cria a arvore inicial.
 */
-Arvore * criarArvore();
+Arvore * criarArvore(); //funcão que retorna um ponteiro para estrutura tipo 'Arvore'
