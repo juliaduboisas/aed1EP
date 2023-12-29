@@ -129,7 +129,9 @@ void updateToken(TokenPalavra* token, int linha){
 void printToken(TokenPalavra* token, Arquivo* arquivo){
     printf("Existem %i ocorrencias da palavra '%s' na(s) seguinte(s) linha(s):\n", token->contagem, token->palavra);
     for(int i = 0; i<token->contagem; i++){
-        printf("%05d: %s\n", token->linha[i], arquivo->linhas[token->linha[i]-1].conteudo);
+        if(token->linha[i]!=token->linha[i-1]){
+            printf("%05d: %s\n", token->linha[i], arquivo->linhas[token->linha[i]-1].conteudo);
+        }
     }
 }
 
