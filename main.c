@@ -6,7 +6,7 @@
 
 /* 
 TODO
- + O quê é indexType? // indexType é o tipo de índice que o usuário quiser usar, usa pra definir na main.c
+ + O que é indexType? // indexType é o tipo de índice que o usuário quiser usar, usa pra definir na main.c
                         que tipo de criarIndex precisa usar, que tipo de busca etc.
  - Dá pra mandar os erros para o stdErr? // Para que tipos de erros? Seria realmente interessante pra o que o Coutinho
                                             pediu ou seria só extra?
@@ -21,6 +21,17 @@ TODO
  - Mudar os modos de programa para um switch-case. // Não acho que seria vantajoso pois duplicaria desnecessariamente muito
                                                       código que os dois tipos de índice tem em comum.
  - Fazer o clock de indexação também, já que vamos dividir essas questões. // mesma coisa que no ponto 3
+
+ - Criação da função criaIndexArvore() que crie um índice em árvore à partir de um arquivo .txt qualquer.
+ - Criação da função buscaArvore() que busque uma palavra dentro de um índice em árvore e retorne o token, se encontrar
+   ou NULL, se não encontrar.
+ - Atualização de Makefile para a inclusão dos arquivos arvore com
+     gcc -c -o arvore.o arvore.c
+ - Realização de testes com diferentes arquivos .txt, preferencialmente de diversos tamanhos e em diferentes línguas,
+   documentação dos testes e análise do resultado. Esse relatório deve ser incluido em um arquivo relatorio.pdf
+ - Finalização do README incluindo um link de acesso ao repositório do GitHub
+ - Junção de todos os arquivos (código, README.md e relatorio.pdf) em um arquivo ZIP
+ - Envio no eDisciplinas (Moodle)
 */
 
 
