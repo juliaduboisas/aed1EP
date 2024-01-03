@@ -40,23 +40,35 @@ typedef struct lista{
 } Lista;
 
 /**
- * Funcao que cria a lista inicial.
+ * Inicializa a lista com um nó do tipo Lista e
+ * dá um ponteiro nulo para ele.
 */
 Lista * criarLista();
 
 /**
- * Funcao que insere um tokenPalavra* token em uma Lista* lista. 
+ * Insere um tokenPalavra* token em uma Lista* lista.
+ * Ele também verifica se a palavra já está na lista.
+ * 
+ * Caso sim, registra a nova linha.
+ * 
+ * Caso contrário, coloca ela no local adequado, alfa-
+ * beticamente. 
 */
 Boolean insereLista(Lista * lista, TokenPalavra * token);
 
 /**
- * Funcao que busca em uma lista. Se encontra a palavra, já imprime seu token,
- * e se nao a encontra, imprime que ela nao foi encontrada.
+ * Busca linear na lista.
+ * 
+ * Se encontra a palavra, já retorna seu token,
+ * 
+ * se não a encontra, retorna o ponteiro nulo.
 */
 TokenPalavra * buscaLista (Lista * lista, char * palavraBuscada);
 
 /**
- * Funcao que indexa a lista dado certo arquivo. Retorna o numero de linhas
- * do arquivo.
+ * Funcao que indexa para uma lista as palavras de um certo arquivo.
+ * Retorna o numero de linhas do arquivo.
+ * 
+ * Ela já limpa o arquivo e salva a palavra com letras minúsculas.
 */
 int criarIndexLista(Lista * lista, FILE * file, Arquivo * arquivo);
