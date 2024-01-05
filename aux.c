@@ -82,7 +82,7 @@ int checaComando(char* comando, char* palavra){
 // Insere uma nova linha em uma estrutura de arquivo
 void insereLinha(Arquivo * arquivo, char* linha){
     arquivo->numLinhas++; //aumenta o numero total de linhas no arquivo para o numero da linha atual
-    int tamLinha = strlen(linha); //determina o tamanho da linha
+    int tamLinha = strlen(linha)+1; //determina o tamanho da linha
     arquivo->linhas = (Linha*) realloc(arquivo->linhas, (arquivo->numLinhas) * (sizeof(Linha))); //abre espaco para guardar o conteudo da linha atual
     Linha* linha_ = (Linha*) malloc(sizeof(Linha)); //abre espaco para a linha atual
     linha_->tamanho = tamLinha; //guarda o tamanho da linha na struct Linha
