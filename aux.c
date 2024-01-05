@@ -138,7 +138,7 @@ void printToken(TokenPalavra* token, Arquivo* arquivo){
 TokenPalavra* criarToken(char* palavra, int linha){ //esse token e sensivel a maiusculas
     TokenPalavra* token = (TokenPalavra*)malloc(1*(sizeof(TokenPalavra))); //cria o token
     //atualiza as variáveis do token
-    int tamanhoPalavra = strlen(palavra); //define tamanho da palavra
+    int tamanhoPalavra = strlen(palavra)+1; //define tamanho da palavra
     token->palavra = (char*)malloc(tamanhoPalavra*(sizeof(char))); //reserva o espaço da palavra na memória
     strcpy(token->palavra, palavra); //se quisermos, podemos inserir a funcao toLowercase de aux.h e tirar de leitorTextos.c
     token->contagem = 1;
