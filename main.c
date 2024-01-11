@@ -114,7 +114,7 @@ int main(int argc, char ** argv){
     printf("Tipo de indice:'%s'\n", (indexType==0 ? "lista" : "arvore"));
     printf("Arquivo de texto: '%s'\n", argv[1]);
     printf("Numero de linhas do arquivo: %i\n", numLinhas);
-    printf("Tempo para carregar o arquivo e construir o indice: %05d ms\n", 1000*timeSpent/CLOCKS_PER_SEC);
+    printf("Tempo para carregar o arquivo e construir o indice: %05.0f ms\n", 1000.0*timeSpent/CLOCKS_PER_SEC);
 
     //FIM DE LEITURA, INDEXACAO E PRINT DE INFORMACOES INICIAIS
 
@@ -151,7 +151,7 @@ int main(int argc, char ** argv){
                 printf("Palavra '%s' nao encontrada.\n", palavra); //imprime texto de resposta
             } else printToken(resposta, arquivo); //se a palavra estiver no texto, imprime as infos necessarias
            
-            printf("Tempo de busca: %05d ms\n", 1000*timeSpent/CLOCKS_PER_SEC); //imprime texto de busca
+            printf("Tempo de busca: %05.0f ms\n", 1000.0*timeSpent/CLOCKS_PER_SEC); //imprime texto de busca
 
         } else { //se o comando nao for valido
             printf("Opcao invalida!\n");
